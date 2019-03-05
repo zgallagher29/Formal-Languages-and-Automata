@@ -33,4 +33,4 @@ You will probably able to just skip to step 4, but if that doesn't work then do 
 
 ### Example Run
 
-![alt text](https://github.com/zgallagher29/Formal-Languages-and-Automata/issues/1#issue-417143433)
+![](https://user-images.githubusercontent.com/17460367/53786087-26704880-3ee0-11e9-8500-7788105c041a.png)
