@@ -34,3 +34,8 @@ You will probably able to just skip to step 4, but if that doesn't work then do 
 ### Example Run
 
 ![](https://user-images.githubusercontent.com/17460367/53786087-26704880-3ee0-11e9-8500-7788105c041a.png)
+
+### Resources 
+- http://moss.csc.ncsu.edu/~mueller/codeopt/codeopt00/y_man.pdf
+- https://www.youtube.com/watch?v=54bo1qaHAfk
+- https://www.youtube.com/watch?v=gpmBEx_Cg8k
