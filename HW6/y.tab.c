@@ -1213,7 +1213,7 @@ yyreduce:
 
   case 3:
 #line 22 "syntax.y" /* yacc.c:1646  */
-    {(yyval.f) = (yyvsp[-2].f) + (yyvsp[0].f); }
+    {(yyval.f) = (yyvsp[-2].f)+(yyvsp[0].f); }
 #line 1218 "y.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1225,7 +1225,7 @@ yyreduce:
 
   case 5:
 #line 25 "syntax.y" /* yacc.c:1646  */
-    {(yyval.f) = (yyvsp[-2].f) * (yyvsp[0].f);}
+    {(yyval.f) = (yyvsp[-2].f)*(yyvsp[0].f);}
 #line 1230 "y.tab.c" /* yacc.c:1646  */
     break;
 
