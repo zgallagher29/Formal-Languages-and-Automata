@@ -9,15 +9,21 @@ void yyerror(char* msg);
 
 %union {
     float f; 
+    int i; 
+
    
 }
 
 %token <f> FLOAT
-%type <f> E T F
+%token <i> INT
+%type <f> E N T F
+
+
+
 
 %% 
 
-S: E            {printf("%f\n",$1);}
+S: E            {printf("%.6g\n",$1);}     
  ; 
 E: E '+' T      {$$ = $1+$3; }
  | T            {$$ = $1;}
@@ -26,8 +32,14 @@ T: T '*' F      {$$ = $1*$3;}
  | F            {$$ = $1;}
  ;
 F: '(' E ')'    {$$ = $2;}     
- | FLOAT        {$$ = $1;}
- ; 
+ | N            {$$ = $1;}
+ ;
+N: FLOAT        {$$ = $1;}   
+ | INT          {$$ = $1;}   
+ ;
+
+ 
+ 
 %% 
 
 void yyerror(char *msg) {

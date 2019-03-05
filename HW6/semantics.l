@@ -10,7 +10,8 @@
 
 %%
 
-[0-9]+(\.[0-9]+)?([eE][0-9]+)?  {yylval.f = atof(yytext); return FLOAT;}
+[0-9]*\.[0-9]+"f"?              {yylval.f = atof(yytext); return FLOAT;}
+[0-9]+                          {yylval.i = atoi(yytext); return INT;}
 [+()*]                          {return yytext[0];}                          
 [ \t\f\v\n]                     { ; }
 

@@ -45,11 +45,13 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    FLOAT = 258
+    FLOAT = 258,
+    INT = 259
   };
 #endif
 /* Tokens.  */
 #define FLOAT 258
+#define INT 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -59,9 +61,11 @@ union YYSTYPE
 #line 10 "syntax.y" /* yacc.c:1909  */
 
     float f; 
+    int i; 
+
    
 
-#line 65 "y.tab.h" /* yacc.c:1909  */
+#line 69 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
