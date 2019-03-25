@@ -7,13 +7,6 @@ class Tape():
         self.initialString= initialString
         self.tape = setUpTape(initialString)
  
-    
-class Transition():
-       def __init__(self, curChar, direction,replaceChar):
-    
-        self.curChar= curChar
-        self.replaceChar = replaceChar
-        self.direction = direction
 
 def main():
     t = Tape('')
