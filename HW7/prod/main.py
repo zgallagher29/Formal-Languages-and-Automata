@@ -17,22 +17,27 @@ class Transition():
 
 def main():
     t = Tape('')
-    t2 = Tape('#this#this')
-
+    t2 = Tape('#apples#bananas#hello#apple#banana#')
+    t3 = Tape('#apples#bananas#hello#apple#banana')
+    t4 = Tape('#apples#orange#yellow#diamonds#hello')
     runSimulation(t.tape)
     print('--------------')
     runSimulation(t2.tape)
+    print('--------------')
+    runSimulation(t3.tape)
+    print('--------------')
+    runSimulation(t4.tape)
 def runSimulation(newTape):
     pos = 0
     newTape.append('|_|')
     state1(newTape,pos)
 
 def state1(word,pos):
+    print('')
     print('State 1')
-
-    if(len(word)==1):
-        print('empty string')
-        accept('1', '|_|')
+    print(word)
+    if(word[pos]=='|_|'):
+        accept('1', word)
     elif(word[pos]=='#'):
         
         transition1to2(word, pos)
@@ -50,23 +55,66 @@ def transition2to3(word,pos):
     state3(word, pos)
     
 def state2(word, pos):
+    print('')
     print('State 2')
+    print(word)
     printLocation(pos, word)
-    transition2to3(word,pos)
+    if(word[pos]=='|_|'):
+        reject('2',word)
+    else:
+        transition2to3(word,pos)
 
 def state3(word,pos):
+    print('')
     print('State 3')
+    print(word)
     for x in range(pos,len(word)):
+    
         printLocation(x, word)
         if word[pos-1]==word[x]:
             reject('3',word)
             break
         elif word[x]=='|_|':
             transiton3to4(word,x)
+            break
+    
 def transiton3to4(word, pos):
     print('Transition '+word[pos] +' ---> L')
     pos = pos-1
+    state4(word,pos)
 
+def state4(word,pos):
+    print('')
+    print('State 4')
+    print(word)
+    printLocation(pos, word)
+    for i in range(pos,-1,-1):
+        
+        
+        if(word[i]=='X'):
+            pos=i
+            transition4to5(word, pos)
+            break
+            
+def transition4to5(word,pos):
+    print('Transition '+word[pos] +' --->'+word[pos] + ', R')
+    pos = pos+1
+    state5(word,pos)
+
+def state5(word,pos):
+    print('')
+    print('State 5')
+    print(word)
+    printLocation(pos, word)
+    if word[pos] == 'X':
+        accept('5', word)
+    else:
+        transition5to1(word,pos)
+def transition5to1(word,pos):
+     print('Transition '+word[pos] +' ---> X' + ', R')
+     word[pos]='X'
+     pos = pos+1
+     state1(word,pos)
 
 
 
@@ -76,10 +124,12 @@ def printLocation(pos, word):
 
 
 def accept(previousState,word):
+        print('')
         print('ACCEPT AFTER STATE:'+ previousState )
         print('Final Output of Tape: ')
         print(word)
 def reject(previousState,word):
+        print('')
         print('REJECT AFTER STATE: ' + previousState)
         print('Final Output of Tape: ')
         print(word)
