@@ -37,11 +37,7 @@ def state1(word,pos):
         pos =pos+1
     else:
         reject('1', word)
-def state2():
 
-
-def transition1to2():
-     print('Transition: # --> X, move right')
 
 
 def accept(previousState,word):
