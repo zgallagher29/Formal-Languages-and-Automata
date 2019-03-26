@@ -12,7 +12,7 @@ def main():
     t = Tape('')
     t2 = Tape('#apples#bananas#hello#apple#banana#')
     t3 = Tape('#apples#bananas#hello#apple#banana')
-    t4 = Tape('#apples#orange#yellow#diamonds#hello')
+    t4 = Tape('#apples')
     runSimulation(t.tape)
     print('--------------')
     runSimulation(t2.tape)
@@ -20,6 +20,7 @@ def main():
     runSimulation(t3.tape)
     print('--------------')
     runSimulation(t4.tape)
+
 def runSimulation(newTape):
     pos = 0
     newTape.append('|_|')
