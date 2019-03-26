@@ -10,9 +10,9 @@ class Tape():
 
 def main():
     t = Tape('')
-    t2 = Tape('#apples#bananas#hello#apple#banana#')
-    t3 = Tape('#apples#bananas#hello#apple#banana')
-    t4 = Tape('#apples')
+    t2 = Tape('#10#111#10#111111')
+    t3 = Tape('#1000#100101#100#111111111#000000')
+    t4 = Tape('#100101')
     runSimulation(t.tape)
     print('--------------')
     runSimulation(t2.tape)
