@@ -22,25 +22,19 @@ def main():
     for i in range(0, productions):
         print("Enter a production with a space at the end. Example format: S->aSa|bSb|b|a .")
         prod = input('HEY')
-        prod = prod + '$'
+      
         print(prod)
         grammar[i][0] = prod[0]  # before the - in '->'
         grammar[i][1] = prod[1]
         grammar[i][2] = prod[2]
-        x=3
+  
         index = 3
-        right=""
-        for j in range(3, len(prod)):
-            right = right+prod[j]
-            if prod[j] == '|':
-                grammar[i][index]= right[1:-1]
-                right = ""
-                index = index + 1
-                
-            if prod[j]=='$':
-                grammar[i][index]= right[1:-1]
-                grammar[i][index+1]= "$"
-                break
+        right=prod[3:]
+        list1 = right.split('|')
+        for term in list1:
+            grammar[i][index] = term
+            index = index +1
+            
             
     print(grammar)
     checkString(grammar)
@@ -65,14 +59,19 @@ def checkString(grammar):
                     
                 l = l+1
         matrix[i][i]=nonTerm
-        for l in range(1,len(word)):
-            for j in range(l,len(word)):
-                nonTerm = ""
-                for m in range( j-l, j):
-                    pr = combine(matrix[j-l][m],matrix[m+1][j],grammar)
-                    nonTerm = concat(nonTerm,pr)
-                matrix[j-l][j]=nonTerm
-        print_results(matrix, word)
+    for l in range(1,len(word)):
+        for j in range(l,len(word)):
+            nonTerm = ""
+            for m in range( j-l, j):
+                pr = combine(matrix[j-l][m],matrix[m+1][j],grammar)
+                nonTerm = concat(nonTerm,pr)
+            matrix[j-l][j]=nonTerm
+        ##print_results(matrix, word)
+    print(matrix)
+    if isValidString(word,matrix):
+        print("THIS STRING CAN BE GENERATED!")
+    else:
+        print("THIS STRING CANNOT BE GENERATED!")
 
 def print_results(matrix, word):
     for i in range(0,len(word)):
@@ -81,8 +80,10 @@ def print_results(matrix, word):
         for j in range(k,len(word)):
             print(matrix[x][j])
             x =x+1
-def isValidString():
-    return true
+def isValidString(word, matrix):
+    if matrix[0][0].find('S')!=matrix[0][0]:
+        return True
+    return False
                             
                         
 def combine(a,b,grammar):
