@@ -83,14 +83,21 @@ def checkString(grammar,productions):
                 pr = search_combo(matrix[j-k][m],matrix[m+1][j],grammar,productions)
 
                 nonTerm =nonTerm+pr
-            matrix[j-k][j] = nonTerm
+            unique = ""
+            for z in range(0,len(nonTerm)):
+                if nonTerm[z] in unique:
+                    print("")
+                else:
+                    unique = unique+nonTerm[z]
+
+            matrix[j-k][j] = unique
 
         # matrix row 2 two letters: check if row below  
 
 
-    
         ##print_results(matrix, word)
     print(matrix)
+    
     if isValidString(word,matrix):
         print("THIS STRING CAN BE GENERATED!")
     else:
