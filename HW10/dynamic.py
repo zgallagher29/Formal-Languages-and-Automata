@@ -11,19 +11,18 @@ import numpy as np
 
 
 # In[2]:
-prods = ['S->AB|BC','A->BA|a','B->CC|b','C->AB|a']
-nums = 4
+
 def main():
     
     
-  #  productions = int(input("What is the number of productions? "))
-    productions =4
+    productions = int(input("What is the number of productions? "))
+
     grammar = np.empty([productions, 12], dtype=object)
     for i in range(0, productions):
-        print("Enter a production. Example format: S->aSa|bSb|b|a .")
-        prod = prods[i]
+        print("Enter a production. The first production must start with S. Example format: S->aSa|bSb|b|a .")
+        prod = input('Production: ')
       
-        print(prod)
+        
         grammar[i][0] = prod[0]  # before the - in '->'
         grammar[i][1] = prod[1]
         grammar[i][2] = prod[2]
@@ -46,8 +45,8 @@ def main():
     
 def checkString(grammar,productions):
     
-    #word = input('What is the string you would like to check? ')
-    word = "baaba"
+    word = input('What is the string you would like to check? ')
+    
     matrix = np.empty([len(word),len(word)], dtype = object)
     for x in range(len(word)):
         for y in range(len(word)):
@@ -68,17 +67,15 @@ def checkString(grammar,productions):
         matrix[x][x] = nonTerm
         nonTerm = ""
         x=x+1
-    print(matrix)
+
     nonTerm=""
     for k in range(1, len(word)):
         for j in range(k, len(word)):
             nonTerm = ""
             for m in range(j-k, j):
-                print("j ", j)
-                print("k", k)
-                print("m", m)
+                print("-------")
                 print (matrix)
-                enter = input("Press enter to keep going")
+           
 
                 pr = search_combo(matrix[j-k][m],matrix[m+1][j],grammar,productions)
 
@@ -96,26 +93,17 @@ def checkString(grammar,productions):
 
 
         ##print_results(matrix, word)
+    print('--Final Matrix--')
     print(matrix)
-    
-    if isValidString(word,matrix):
+    if matrix[0][len(word)-1]=='':
+        print("THIS STRING CANNOT BE GENERATED!")
+
+    elif matrix[0][len(word)-1][0]=='S':
         print("THIS STRING CAN BE GENERATED!")
     else:
         print("THIS STRING CANNOT BE GENERATED!")
 
-def print_results(matrix, word):
-    for i in range(0,len(word)):
-        x = 0
-        k = len(word) - i -1
-        for j in range(k,len(word)):
-            print(matrix[x][j])
-            x =x+1
-def isValidString(word, matrix):
-    if matrix[0][0].find('S')!=matrix[0][0]:
-        return True
-    return False
-                            
-                        
+                                                    
 def search_combo(a,b,grammar,productions):
     pri=a
     re=""
@@ -123,7 +111,7 @@ def search_combo(a,b,grammar,productions):
         for j in range(0,len(b)):
             pri = ""
             pri = pri+a[i]+b[j]
-            print('HEPRLLFSA',pri)
+        
             re =re +find_production(pri,grammar,productions)
             
     return re 
@@ -144,7 +132,7 @@ def concat(nonTerm,gram):
     for i in range(0,len(gram)):
         if r.find(gram[i]) > len(r):
             r = r+gram[i]   
-    print('CONCAT R ',r)     
+  
     return r
         
         
