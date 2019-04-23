@@ -1,7 +1,7 @@
 
 
 def main():
-    clause = '(AVB)^(|BVC)^(DV|E)^(FVE)'
+    clause = '(AVB)^(|BVC)^(|E)^(E)'
     clauses = []
     clauseBuilder = ""
     for i in range(0,len(clause)):
@@ -26,7 +26,7 @@ def main():
                         if (clauses[c][vc-1] =='|' and clauses[j][vj-1] !='|'):
                             
                             temp = '('+clauses[c][:vc-1]+'V'+ clauses[j][vc+1:]
-                            print(temp)
+                         
                             temp = temp +clauses[j][:vj]+clauses[j][vj+1:]+')'
                             resClause.append(temp)
                             temp =""
@@ -50,9 +50,15 @@ def main():
             resClause.append(clauses[c])
         else:
             newClause == False
-    if not resClause:
-        print('unsatified')
-    print(resClause)
+   
+    reject = False
+    for i in range(0, len(resClause)):
+     if resClause[i]=='(V)':
+         reject = True
+         print('Reject')
+
+   
+    if reject == False: print(resClause)
 
                         
                             
