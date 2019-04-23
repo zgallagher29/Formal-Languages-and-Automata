@@ -1,7 +1,7 @@
 
 
-def main():
-    clause = '(AVB)^(|BVC)^(|E)^(E)'
+def main(clause):
+    
     clauses = []
     clauseBuilder = ""
     for i in range(0,len(clause)):
@@ -67,4 +67,6 @@ def main():
 
 
 
-main()
+main('(AVB)^(|BVC)^(|E)^(E)')
+main('(AVB)^(|BVC)')
+main('(AVB)^(|BVC)^(DV|E)^(FVE)')
