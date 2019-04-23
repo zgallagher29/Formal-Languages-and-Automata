@@ -1,6 +1,6 @@
 import re
 import unittest
-patterns = {'email':'^.+@(\[?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$', 'mention': '@([^:\s]+)'}
+patterns = {'email':"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)", 'mention': "(?<=^|(?<=[^a-zA-Z0-9-_\.]))@([A-Za-z]+[A-Za-z0-9_]+)"}
 
 
 def main():
@@ -20,4 +20,4 @@ def checkValid(pattern,checkInput ):
 
 
 
-
+main()

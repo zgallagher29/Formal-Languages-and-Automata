@@ -6,7 +6,7 @@ import time
 class MyTest(unittest.TestCase):
     def setUp(self):
         self.startTime = time.time()
-        import regex
+       
     def tearDown(self):
         t = time.time() - self.startTime-1
         print ("%s: %.3f" % (self.id(), t))
@@ -27,4 +27,4 @@ class MyTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
