@@ -1,9 +1,9 @@
 
 
 def main():
-    clause = '(AVB)^(|BVC)'
+    clause = '(AVB)^(|BVC)^(DV|E)^(FVE)'
     clauses = []
-    clauseBuilder = ''
+    clauseBuilder = ""
     for i in range(0,len(clause)):
         if clause[i] == ')':
 
@@ -22,11 +22,12 @@ def main():
                 for vj in range(0,len(clauses[j])):
                     
                     if clauses[c][vc] == clauses[j][vj]:
-                        print(clause[c][vc-1]+clauses[j][vj-1])
+                        
                         if (clauses[c][vc-1] =='|' and clauses[j][vj-1] !='|'):
                             
-                            temp = '('+clauses[c][:vc-1]+'V'+ clauses[c][vc+1:]
-                            temp = temp + "V"+clauses[c][:vj]+clauses[c][vj+1:]+')'
+                            temp = '('+clauses[c][:vc-1]+'V'+ clauses[j][vc+1:]
+                            print(temp)
+                            temp = temp +clauses[j][:vj]+clauses[j][vj+1:]+')'
                             resClause.append(temp)
                             temp =""
                         
