@@ -25,10 +25,8 @@ def main():
                         print(clause[c][vc-1]+clauses[j][vj-1])
                         if (clauses[c][vc-1] =='|' and clauses[j][vj-1] !='|'):
                             
-                            temp = clauses[c].replace(clauses[c][vc-1],"")
-                            temp = temp +clauses[j]
-                            temp = temp.replace(clauses[c][vc],"")
-                        
+                            temp = '('+clauses[c][:vc-1]+'V'+ clauses[c][vc+1:]
+                            temp = temp + "V"+clauses[c][:vj]+clauses[c][vj+1:]+')'
                             resClause.append(temp)
                             temp =""
                         
