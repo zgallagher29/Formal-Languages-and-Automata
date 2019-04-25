@@ -60,11 +60,6 @@ def main(clause):
    
     if reject == False: print(resClause)
 
-                        
-                            
-                    
-                            
-
 
 
 main('(AVB)^(|BVC)^(|E)^(E)')
